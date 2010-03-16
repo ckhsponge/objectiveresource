@@ -7,8 +7,10 @@
 //
 
 #import "ObjectiveResource.h"
+#import "ORSResponseFormat.h"
 
-@interface ObjectiveResourceConfig : NSObject 
+@interface ObjectiveResourceConfig : ObjectiveResource {
+}
 
 + (NSString *)getSite;
 + (void)setSite:(NSString*)siteURL;
@@ -24,7 +26,5 @@
 + (void)setProtocolExtension:(NSString *)protocolExtension;
 + (void)setResponseType:(ORSResponseFormat) format;
 + (ORSResponseFormat)getResponseType;
-+ (NSString *)getLocalClassesPrefix;
-+ (void)setLocalClassesPrefix:(NSString *)prefix;
 
 @end

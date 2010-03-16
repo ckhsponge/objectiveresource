@@ -8,6 +8,7 @@
 
 #import "objective_resourceAppDelegate.h"
 #import "ObjectiveResource.h"
+#import "ObjectiveResourceConfig.h"
 
 @implementation objective_resourceAppDelegate
 

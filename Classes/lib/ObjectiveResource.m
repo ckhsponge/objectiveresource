@@ -6,7 +6,7 @@
 //  Copyright 2009 Joshua Vickery. All rights reserved.
 //
 
-#import "NSObject+ObjectiveResource.h"
+#import "ObjectiveResource.h"
 #import "Connection.h"
 #import "Response.h"
 #import "CoreSupport.h"
@@ -20,10 +20,8 @@ static SEL _activeResourceParseDataMethod = nil;
 static SEL _activeResourceSerializeMethod = nil;
 static NSString *_activeResourceProtocolExtension = @".xml";
 static ORSResponseFormat _format;
-static NSString *_activeResourcePrefix = nil;
 
-
-@implementation NSObject (ObjectiveResource)
+@implementation ObjectiveResource : NSObject
 
 #pragma mark configuration methods
 + (NSString *)getRemoteSite {
@@ -31,10 +29,7 @@ static NSString *_activeResourcePrefix = nil;
 }
 
 + (void)setRemoteSite:(NSString *)siteURL {
-	if (_activeResourceSite != siteURL) {
-		[_activeResourceSite autorelease];
-		_activeResourceSite = [siteURL copy];
-	}
+	_activeResourceSite = siteURL;
 }
 
 + (NSString *)getRemoteUser {
@@ -42,10 +37,7 @@ static NSString *_activeResourcePrefix = nil;
 }
 
 + (void)setRemoteUser:(NSString *)user {
-	if (_activeResourceUser != user) {
-		[_activeResourceUser autorelease];
-		_activeResourceUser = [user copy];
-	}
+	_activeResourceUser = user;
 }
 
 + (NSString *)getRemotePassword {
@@ -53,10 +45,7 @@ static NSString *_activeResourcePrefix = nil;
 }
 
 + (void)setRemotePassword:(NSString *)password {
-	if (_activeResourcePassword != password) {
-		[_activeResourcePassword autorelease];
-		_activeResourcePassword = [password copy];
-	}
+	_activeResourcePassword = password;
 }
 
 + (void)setRemoteResponseType:(ORSResponseFormat) format {
@@ -100,34 +89,17 @@ static NSString *_activeResourcePrefix = nil;
 }
 
 + (void)setRemoteProtocolExtension:(NSString *)protocolExtension {
-	if (_activeResourceProtocolExtension != protocolExtension) {
-		[_activeResourceProtocolExtension autorelease];
-		_activeResourceProtocolExtension = [protocolExtension copy];
-	}
+	_activeResourceProtocolExtension = protocolExtension;
 }
 
-// Prefix additions
-+ (NSString *)getLocalClassesPrefix {
-	return _activeResourcePrefix;
-}
-
-+ (void)setLocalClassesPrefix:(NSString *)prefix {
-	if (prefix != _activeResourcePrefix) {
-		[_activeResourcePrefix autorelease];
-		_activeResourcePrefix = [prefix copy];
-	}
-}
 
 // Find all items 
 + (NSArray *)findAllRemoteWithResponse:(NSError **)aError {
 	Response *res = [Connection get:[self getRemoteCollectionPath] withUser:[[self class] getRemoteUser] andPassword:[[self class]  getRemotePassword]];
 	if([res isError] && aError) {
 		*aError = res.error;
-		return nil;
 	}
-	else {
-		return [self performSelector:[self getRemoteParseDataMethod] withObject:res.body];
-	}
+	return [self performSelector:[self getRemoteParseDataMethod] withObject:res.body];
 }
 
 + (NSArray *)findAllRemote {
@@ -149,14 +121,8 @@ static NSString *_activeResourcePrefix = nil;
 }
 
 + (NSString *)getRemoteElementName {
-	NSString * remoteElementName = NSStringFromClass([self class]);
-	if (_activeResourcePrefix != nil) {
-		remoteElementName = [remoteElementName substringFromIndex:[_activeResourcePrefix length]];
-	}
-	return [[remoteElementName stringByReplacingCharactersInRange:NSMakeRange(0, 1) 
-													   withString:[[remoteElementName substringWithRange:NSMakeRange(0, 1)] 
-																   lowercaseString]] 
-			underscore];
+	return [[NSStringFromClass([self class]) stringByReplacingCharactersInRange:NSMakeRange(0, 1) 
+																	 withString:[[NSStringFromClass([self class]) substringWithRange:NSMakeRange(0,1)] lowercaseString]] underscore];
 }
 
 + (NSString *)getRemoteCollectionName {
@@ -190,10 +156,11 @@ static NSString *_activeResourcePrefix = nil;
 }
 
 // Converts the object to the data format expected by the server
-- (NSString *)convertToRemoteExpectedType {	  
-  return [self performSelector:[[self class] getRemoteSerializeMethod] withObject:[self excludedPropertyNames]];
+- (NSString *)convertToRemoteExpectedType {
+	// exclude id , created_at , updated_at
+	NSArray	 *defaultExclusions = [NSArray arrayWithObjects:[self getRemoteClassIdName],@"createdAt",@"updatedAt",nil];
+	return [self performSelector:[[self class] getRemoteSerializeMethod] withObject:defaultExclusions];
 }
-
 
 #pragma mark default equals methods for id and class based equality
 - (BOOL)isEqualToRemote:(id)anObject {
@@ -225,13 +192,11 @@ static NSString *_activeResourcePrefix = nil;
 
 
 - (NSString *)getRemoteClassIdName {
-	NSString * remoteElementName = NSStringFromClass([self class]);
-	if (_activeResourcePrefix != nil) {
-		remoteElementName = [remoteElementName substringFromIndex:[_activeResourcePrefix length]];
-	}
-	return [NSString stringWithFormat:@"%@Id", 
-			[remoteElementName stringByReplacingCharactersInRange:NSMakeRange(0, 1) 
-													   withString:[[remoteElementName substringWithRange:NSMakeRange(0,1)] lowercaseString]]];
+	
+	return [NSString stringWithFormat:@"%@Id",
+			[NSStringFromClass([self class]) stringByReplacingCharactersInRange:NSMakeRange(0, 1) 
+																	 withString:[[NSStringFromClass([self class]) substringWithRange:NSMakeRange(0,1)] lowercaseString]]];
+	
 }
 
 - (BOOL)createRemoteAtPath:(NSString *)path withResponse:(NSError **)aError {
@@ -341,22 +306,5 @@ static NSString *_activeResourcePrefix = nil;
 	NSError *error;
 	return [self saveRemoteWithResponse:&error];
 }
-
-/*
- Override this in your model class to extend or replace the excluded properties
- eg.
- - (NSArray *)excludedPropertyNames
- {
-  NSArray *exclusions = [NSArray arrayWithObjects:@"extraPropertyToExclude", nil];
-  return [[super excludedPropertyNames] arrayByAddingObjectsFromArray:exclusions];
- }
-*/
-
-- (NSArray *)excludedPropertyNames
-{
-  // exclude id , created_at , updated_at
-  return [NSArray arrayWithObjects:[self getRemoteClassIdName],@"createdAt",@"updatedAt",nil]; 
-}
-
 
 @end

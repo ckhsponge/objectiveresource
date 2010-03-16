@@ -92,7 +92,7 @@
 		23B8A4900F55EF7C00F74584 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 2314FF6F0F2F8089003B13AB /* Person.m */; };
 		23B8A4910F55EF7C00F74584 /* ViewPersonController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2314FF750F2F8094003B13AB /* ViewPersonController.m */; };
 		23B8A4920F55EF7C00F74584 /* PersonTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2322CD640F2F968000EDF562 /* PersonTest.m */; };
-		23B8A4930F55EF7C00F74584 /* NSObject+ObjectiveResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3584DFD50F31F684008E596B /* NSObject+ObjectiveResource.m */; };
+		23B8A4930F55EF7C00F74584 /* ObjectiveResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3584DFD50F31F684008E596B /* ObjectiveResource.m */; };
 		23B8A4940F55EF7C00F74584 /* ObjectiveResourceConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 3584E0EF0F324581008E596B /* ObjectiveResourceConfig.m */; };
 		23B8A4950F55EF7C00F74584 /* NSArray+JSONSerializableSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 23510DE70F4CB31B00B0796F /* NSArray+JSONSerializableSupport.m */; };
 		23B8A4960F55EF7C00F74584 /* NSNumber+XMLSerializableSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 23510DEB0F4CB32900B0796F /* NSNumber+XMLSerializableSupport.m */; };
@@ -120,8 +120,8 @@
 		356040341020543C00650D4D /* PrefixedPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 356040321020543C00650D4D /* PrefixedPerson.m */; };
 		357A91B60E9A55EF0025D9AF /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = 357A919B0E9A55EF0025D9AF /* Connection.m */; };
 		357A91C00E9A55EF0025D9AF /* Response.m in Sources */ = {isa = PBXBuildFile; fileRef = 357A91B00E9A55EF0025D9AF /* Response.m */; };
-		3584DFD60F31F684008E596B /* NSObject+ObjectiveResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3584DFD50F31F684008E596B /* NSObject+ObjectiveResource.m */; };
-		3584E0A40F32334D008E596B /* NSObject+ObjectiveResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3584DFD50F31F684008E596B /* NSObject+ObjectiveResource.m */; };
+		3584DFD60F31F684008E596B /* ObjectiveResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3584DFD50F31F684008E596B /* ObjectiveResource.m */; };
+		3584E0A40F32334D008E596B /* ObjectiveResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3584DFD50F31F684008E596B /* ObjectiveResource.m */; };
 		3584E0F00F324581008E596B /* ObjectiveResourceConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 3584E0EF0F324581008E596B /* ObjectiveResourceConfig.m */; };
 		3584E0F10F324581008E596B /* ObjectiveResourceConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 3584E0EF0F324581008E596B /* ObjectiveResourceConfig.m */; };
 		35C679300F2E70C2005FF6CE /* NSString+InflectionSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 35C678FC0F2E70C2005FF6CE /* NSString+InflectionSupport.m */; };
@@ -242,8 +242,7 @@
 		357A919B0E9A55EF0025D9AF /* Connection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Connection.m; path = lib/Connection.m; sourceTree = "<group>"; };
 		357A91AF0E9A55EF0025D9AF /* Response.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Response.h; path = lib/Response.h; sourceTree = "<group>"; };
 		357A91B00E9A55EF0025D9AF /* Response.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Response.m; path = lib/Response.m; sourceTree = "<group>"; };
-		3584DFD40F31F684008E596B /* NSObject+ObjectiveResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+ObjectiveResource.h"; path = "lib/NSObject+ObjectiveResource.h"; sourceTree = "<group>"; };
-		3584DFD50F31F684008E596B /* NSObject+ObjectiveResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+ObjectiveResource.m"; path = "lib/NSObject+ObjectiveResource.m"; sourceTree = "<group>"; };
+		3584DFD50F31F684008E596B /* ObjectiveResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ObjectiveResource.m; path = lib/ObjectiveResource.m; sourceTree = "<group>"; };
 		3584E0EE0F324581008E596B /* ObjectiveResourceConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ObjectiveResourceConfig.h; path = lib/ObjectiveResourceConfig.h; sourceTree = "<group>"; };
 		3584E0EF0F324581008E596B /* ObjectiveResourceConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ObjectiveResourceConfig.m; path = lib/ObjectiveResourceConfig.m; sourceTree = "<group>"; };
 		35C678F90F2E70C2005FF6CE /* CoreSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreSupport.h; sourceTree = "<group>"; };
@@ -298,6 +297,7 @@
 		35C6792F0F2E70C2005FF6CE /* XMLSerializableSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLSerializableSupport.h; sourceTree = "<group>"; };
 		35CA32630F1E67A1001513AA /* ConnectionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConnectionDelegate.h; path = lib/ConnectionDelegate.h; sourceTree = "<group>"; };
 		35CA32640F1E67A1001513AA /* ConnectionDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConnectionDelegate.m; path = lib/ConnectionDelegate.m; sourceTree = "<group>"; };
+		5FAFDF43114F675400AC10D8 /* ORSResponseFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORSResponseFormat.h; sourceTree = "<group>"; };
 		6624BF630F676B0C006FD4EE /* NSError+Error.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+Error.h"; sourceTree = "<group>"; };
 		6624BF640F676B0C006FD4EE /* NSError+Error.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+Error.m"; sourceTree = "<group>"; };
 		6679FFAE0F5AF22E00412ABF /* ConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConnectionManager.h; path = lib/ConnectionManager.h; sourceTree = "<group>"; };
@@ -474,8 +474,8 @@
 		357A915B0E9A436E0025D9AF /* ObjectiveResource */ = {
 			isa = PBXGroup;
 			children = (
-				3584DFD40F31F684008E596B /* NSObject+ObjectiveResource.h */,
-				3584DFD50F31F684008E596B /* NSObject+ObjectiveResource.m */,
+				5FAFDF43114F675400AC10D8 /* ORSResponseFormat.h */,
+				3584DFD50F31F684008E596B /* ObjectiveResource.m */,
 				357A91630E9A436E0025D9AF /* Connection */,
 				357A91970E9A55EF0025D9AF /* ObjectiveResource.h */,
 				3584E0EE0F324581008E596B /* ObjectiveResourceConfig.h */,
@@ -769,7 +769,7 @@
 				357A91B60E9A55EF0025D9AF /* Connection.m in Sources */,
 				357A91C00E9A55EF0025D9AF /* Response.m in Sources */,
 				23829E0C0EA393700070F0BF /* EditDogViewController.m in Sources */,
-				3584E0A40F32334D008E596B /* NSObject+ObjectiveResource.m in Sources */,
+				3584E0A40F32334D008E596B /* ObjectiveResource.m in Sources */,
 				23829F010EA39B3B0070F0BF /* ViewDogController.m in Sources */,
 				2377C4F50F019E67006E155F /* NSHTTPURLResponse+Error.m in Sources */,
 				23C922F40F25066900EDE8AF /* NSMutableURLRequest+ResponseType.m in Sources */,
@@ -849,7 +849,7 @@
 				2314FF730F2F8089003B13AB /* Person.m in Sources */,
 				2314FF770F2F8094003B13AB /* ViewPersonController.m in Sources */,
 				2322CD650F2F968000EDF562 /* PersonTest.m in Sources */,
-				3584DFD60F31F684008E596B /* NSObject+ObjectiveResource.m in Sources */,
+				3584DFD60F31F684008E596B /* ObjectiveResource.m in Sources */,
 				3584E0F00F324581008E596B /* ObjectiveResourceConfig.m in Sources */,
 				23510DE80F4CB31B00B0796F /* NSArray+JSONSerializableSupport.m in Sources */,
 				23510DEC0F4CB32900B0796F /* NSNumber+XMLSerializableSupport.m in Sources */,
@@ -905,7 +905,7 @@
 				23B8A4900F55EF7C00F74584 /* Person.m in Sources */,
 				23B8A4910F55EF7C00F74584 /* ViewPersonController.m in Sources */,
 				23B8A4920F55EF7C00F74584 /* PersonTest.m in Sources */,
-				23B8A4930F55EF7C00F74584 /* NSObject+ObjectiveResource.m in Sources */,
+				23B8A4930F55EF7C00F74584 /* ObjectiveResource.m in Sources */,
 				23B8A4940F55EF7C00F74584 /* ObjectiveResourceConfig.m in Sources */,
 				23B8A4950F55EF7C00F74584 /* NSArray+JSONSerializableSupport.m in Sources */,
 				23B8A4960F55EF7C00F74584 /* NSNumber+XMLSerializableSupport.m in Sources */,

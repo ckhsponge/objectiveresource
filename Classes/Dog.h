@@ -8,7 +8,7 @@
 
 #import "ObjectiveResource.h"
 
-@interface Dog : NSObject {
+@interface Dog : ObjectiveResource {
 	
 	NSString *name;
   NSString *dogId;
